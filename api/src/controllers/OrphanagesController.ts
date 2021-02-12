@@ -3,6 +3,16 @@ import { getRepository } from 'typeorm';
 import Orphanage from '../database/entities/Orphanage';
 
 export default class OrphanagesController {
+  public async index(req: Request, res: Response): Promise<Response> {
+    const orphanageRepository = getRepository(Orphanage);
+
+    const orphanages = await orphanageRepository.find();
+
+    console.log(typeof orphanages[0].latitude);
+
+    return res.json(orphanages);
+  }
+
   public async create(req: Request, res: Response): Promise<Response> {
     const {
       name,

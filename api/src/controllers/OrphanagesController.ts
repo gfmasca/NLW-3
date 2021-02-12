@@ -2,6 +2,7 @@ import { Request, Response } from 'express';
 import { getRepository } from 'typeorm';
 
 import Orphanage from '../database/entities/Orphanage';
+import AppError from '../errors/AppError';
 import orphanage_view from '../views/orphanage_view';
 
 export default class OrphanagesController {
@@ -10,9 +11,11 @@ export default class OrphanagesController {
 
     const orphanagesRepository = getRepository(Orphanage);
 
-    const orphanage = await orphanagesRepository.findOneOrFail(id, {
+    const orphanage = await orphanagesRepository.findOne(id, {
       relations: ['images'],
     });
+
+    if (!orphanage) throw new AppError('Orphanage not found');
 
     return res.json(orphanage_view.render(orphanage));
   }

@@ -19,13 +19,13 @@ export default class createOrphanages1613082217128 implements MigrationInterface
         },
         {
           name: 'latitude',
-          type: 'numeric',
+          type: 'decimal',
           scale: 7,
           precision: 10,
         },
         {
           name: 'longitude',
-          type: 'numeric',
+          type: 'decimal',
           scale: 7,
           precision: 10,
         },

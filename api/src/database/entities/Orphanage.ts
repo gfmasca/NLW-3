@@ -8,10 +8,28 @@ export default class Orphanage {
   @Column()
   name: string;
 
-  @Column()
+  @Column('decimal', {
+    transformer: {
+      from(value) {
+        return Number(value);
+      },
+      to(value) {
+        return value;
+      },
+    },
+  })
   latitude: number;
 
-  @Column()
+  @Column('decimal', {
+    transformer: {
+      from(value) {
+        return Number(value);
+      },
+      to(value) {
+        return value;
+      },
+    },
+  })
   longitude: number;
 
   @Column()

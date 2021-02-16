@@ -1,7 +1,7 @@
 import React from 'react';
 import { FiArrowRight } from 'react-icons/fi';
 import {
-  Route, Switch, BrowserRouter, Link,
+  Link,
 } from 'react-router-dom';
 
 import logoImg from '../images/logo.svg';
